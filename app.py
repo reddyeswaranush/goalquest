@@ -581,8 +581,15 @@ def _new_id() -> str:
 # =============================================================
 
 if __name__ == "__main__":
+    import os
+
     print("GoalQuest API Starting...")
+    
     init_db()
-    print("📍 Running at http://localhost:5000")
-    print("📖 Try: GET http://localhost:5000/api/goals?employee_id=emp-001")
-    app.run(debug=True, port=5000)
+
+    port = int(os.environ.get("PORT", 5000))
+
+    print(f"📍 Running at http://0.0.0.0:{port}")
+    print(f"📖 Try: GET /api/goals?employee_id=emp-001")
+
+    app.run(host="0.0.0.0", port=port)
