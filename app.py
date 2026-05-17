@@ -65,8 +65,8 @@ def init_db():
     """Create tables and seed demo data on first run."""
     db = sqlite3.connect(DB_PATH)
     db.execute("PRAGMA foreign_keys = ON")
-    schema_path = os.path.join(os.path.dirname(__file__), "..", "sql", "01_schema.sql")
-    seed_path   = os.path.join(os.path.dirname(__file__), "..", "sql", "02_seed.sql")
+    schema_path = os.path.join(os.path.dirname(__file__), "01_schema.sql")
+    seed_path   = os.path.join(os.path.dirname(__file__), "02_seed.sql")
     with open(schema_path) as f:
         db.executescript(f.read())
     # Only seed if profiles table is empty
